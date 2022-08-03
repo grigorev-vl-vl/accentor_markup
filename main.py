@@ -10,20 +10,10 @@ def create_app():
     app.config['SESSION_TYPE'] = 'filesystem'
     app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 
-
-
     with app.app_context():
         from accentor.routes import accentor
-
         app.register_blueprint(accentor)
-
-
-
         app.add_url_rule("/", "index", lambda: redirect(url_for('accentor.index')))
-        app.add_url_rule("/accentor", "go_accentor", lambda: redirect(url_for('base.index', custom_page="special")))
-
-        print(app.url_map)
-
         return app
 
 

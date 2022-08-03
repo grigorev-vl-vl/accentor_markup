@@ -2,9 +2,22 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>meow</title>
+    <title>Размечаем фамилии</title>
+    <link rel="stylesheet" href="{{ url_for('accentor.static', filename= 'css/accentor.css') }}">
 </head>
 <body>
-Somebody once told me: hands off my macaroni
+
+<p id="surname">
+  <span style="border: solid 1px red"> {{ surname }}</span>
+</p>
+
+
+<script src="{{ url_for('accentor.static', filename= 'js/accentor.js') }}"></script>
+<script>
+    surname = "{{  surname }}"
+</script>
+<script>
+    document.addEventListener("keyup", MakeStress)
+</script>
 </body>
 </html>

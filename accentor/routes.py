@@ -11,7 +11,5 @@ accentor = Blueprint('accentor',
 
 @accentor.route("/", methods=['GET', 'POST'])
 def index():
-    # return jsonify(
-    #     content=render_template("accentor.html")
-    # )
-    return render_template("accentor.html")
+    new_accentor = Accentor()
+    return render_template("accentor.html", surname=new_accentor.surname)
