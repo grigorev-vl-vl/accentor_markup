@@ -11,5 +11,12 @@ accentor = Blueprint('accentor',
 
 @accentor.route("/", methods=['GET', 'POST'])
 def index():
-    new_accentor = Accentor()
-    return render_template("accentor.html", surname=new_accentor.surname)
+    if request.method == 'GET':
+        new_accentor = Accentor()
+        print(f"Init surname is {new_accentor.surname}")
+        return render_template("accentor.html", surname=new_accentor.surname)
+    if request.method == 'POST':
+        new_surname = request.form['surname']
+        print(f"After write surname is {new_surname}")
+        new_accentor = Accentor()
+        new_accentor.next(new_surname)

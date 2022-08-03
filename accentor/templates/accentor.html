@@ -8,16 +8,26 @@
 <body>
 
 <p id="surname">
-  <span style="border: solid 1px red"> {{ surname }}</span>
+  <span> {{ surname }}</span>
 </p>
 
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <script src="{{ url_for('accentor.static', filename= 'js/accentor.js') }}"></script>
+<script>    surname = "{{  surname }}" </script>
+<script>    document.addEventListener("keyup", MakeStress) </script>
+
+
 <script>
-    surname = "{{  surname }}"
+    window.onload = () => {
+        stress = surname.search('\\+')
+        let paragraph = document.getElementById("surname");
+        paragraph.innerHTML = surname.slice(0, stress - 1) +
+            "<span style='color: red; font-weight: bolder'>" +
+            surname[stress -1] +
+            "</span>" +
+            surname.slice(stress + 1);
+    }
 </script>
-<script>
-    document.addEventListener("keyup", MakeStress)
-</script>
+
 </body>
 </html>
